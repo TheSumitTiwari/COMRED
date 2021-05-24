@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head.ejs'); %>
+        <title>
+            <%= title%>
+        </title>
+</head>
+
+<body>
+
+    <%- include('../partials/nav.ejs',{id:5, username: username}) %>
+
+        <div class="ui raised padded text container green segment">
+            <h2 class="ui block header">
+                <div class="content"><i class="home icon"></i>
+                    Logs and History
+                    <div class="sub header">Click on the tabs to check your prognosis, diagnosis and login history</div>
+                </div>
+            </h2>
+
+            <div class="ui top attached tabular menu">
+                <a class="item" data-tab="first">Heart Disease Prog...</a>
+                <a class="item" data-tab="second">Misc. Disease Diag...</a>
+                <a class="item" data-tab="third">Diabetes Diag...</a>
+                <a class="item" data-tab="fourth">Login History</a>
+            </div>
+            <div class="ui bottom attached tab segment" data-tab="first">
+                <table class="ui celled padded table">
+                    <thead>
+                        <tr>
+                            <th class="ui center aligned">Date & Time</th>
+                            <th class="ui center aligned">Name of the Person</th>
+                            <th class="ui center aligned">Report</th>
+                            <th class="ui center aligned">Check Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <% for(var i=0; i < data.length; i++) { %>
+                            <% if(data[i].type===1){ %>
+                                <tr>
+                                    <td>
+                                        <div class="ui center aligned">
+                                            <%= data[i].date.toLocaleString('en-US') %>
+                                        </div>
+                                    </td>
+                                    <td class="ui center aligned">
+                                        <%= data[i].name %>
+                                    </td>
+                                    <td class="ui center aligned">
+                                        <% if(data[i].output=="1" ){%> Health at Risk <% } else {%> Safe Health<% }%>
+                                    </td>
+
+                                    <td class="ui center aligned">
+                                        <%- include('../partials/heartPrognosisLogModal.ejs', { output:data[i].output,
+                                            id:data[i]._id, input: data[i].input, name:data[i].name, date:
+                                            data[i].date.toLocaleString('en-US')}); %>
+                                            <button class="ui red basic small button"
+                                                onclick="showModal('<%= data[i]._id%>')">See
+                                                Details</button>
+                                    </td>
+                                </tr>
+                                <% }} %>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="5">
+                                Details of Your Heart Disease Prognosis History
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="ui bottom attached tab segment " data-tab="second">
+                <table class="ui celled padded table">
+                    <thead>
+                        <tr>
+                            <th class="ui center aligned">Date & Time</th>
+                            <th class="ui center aligned">Name of the Person</th>
+                            <th class="ui center aligned">Report</th>
+                            <th class="ui center aligned">Check Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <% for(var i=0; i < data.length; i++) { %>
+                            <% if(data[i].type===2){ %>
+                                <tr>
+                                    <td>
+                                        <div class="ui center aligned">
+                                            <%= data[i].date.toLocaleString('en-US') %>
+                                        </div>
+                                    </td>
+                                    <td class="ui center aligned">
+                                        <%= data[i].name %>
+                                    </td>
+                                    <td class="ui center aligned">
+                                        <%= data[i].output %>
+                                    </td>
+
+                                    <td class="ui center aligned">
+
+                                        <%- include('../partials/miscDiseaseLogModal.ejs', { output:data[i].output,
+                                            id:data[i]._id, input: data[i].input, name:data[i].name,
+                                            date:data[i].date.toLocaleString('en-US')}); %>
+                                            <button class="ui red basic small button"
+                                                onclick="showModal('<%= data[i]._id%>')">See
+                                                Details</button>
+                                    </td>
+                                </tr>
+                                <% }} %>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="5">
+                                Details of Your Miscellaneous Disease Diagnosis History
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+            <div class="ui bottom attached tab segment " data-tab="third">
+                <table class="ui celled padded table">
+                    <thead>
+                        <tr>
+                            <th class="ui center aligned">Date & Time</th>
+                            <th class="ui center aligned">Name of the Person</th>
+                            <th class="ui center aligned">Report</th>
+                            <th class="ui center aligned">Check Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <% for(var i=0; i < data.length; i++) { %>
+                            <% if(data[i].type===3){ %>
+                                <tr>
+                                    <td>
+                                        <div class="ui center aligned">
+                                            <%= data[i].date.toLocaleString('en-US') %>
+                                        </div>
+                                    </td>
+                                    <td class="ui center aligned">
+                                        <%= data[i].name %>
+                                    </td>
+                                    <td class="ui center aligned">
+                                        <% if(data[i].output=="1" ){%> Health at Risk <% } else {%> Safe Health<% }%>
+                                    </td>
+
+                                    <td class="ui center aligned">
+
+                                        <%- include('../partials/diabetesDiagnosisLogModal.ejs', { output:data[i].output,
+                                            id:data[i]._id, input: data[i].input, name:data[i].name,
+                                            date:data[i].date.toLocaleString('en-US')}); %>
+                                            <button class="ui red basic small button"
+                                                onclick="showModal('<%= data[i]._id%>')">See
+                                                Details</button>
+                                    </td>
+                                </tr>
+                                <% }} %>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="5">
+                                Details of Your Diabetes Diagnosis History
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+            <div class="ui bottom attached tab segment" data-tab="fourth">
+                <table class="ui celled padded table">
+                    <thead>
+                        <tr>
+                            <th class="ui center aligned">Date & Time</th>
+                            <th class="ui center aligned">IP Address</th>
+                            <th class="ui center aligned">Location</th>
+                            <th class="ui center aligned">Device Info</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i=0; i < loginLogs.length; i++) { %>
+                            <tr>
+                                <td class="ui center aligned">
+                                    <%= loginLogs[i].date.toLocaleString('en-US') %>
+                                </td>
+                                <td class="ui center aligned">
+                                    <%= loginLogs[i].ip %>
+                                </td>
+                                <td class="ui center aligned">
+                                    <%= loginLogs[i].location %>
+                                </td>
+                                <td class="ui center aligned">
+                                    <%= loginLogs[i].device %>
+                                </td>
+                            </tr>
+                            <% } %>
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="5">
+                                Your Details of Login History
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+</body>
+<script>
+    $('.menu .item')
+        .tab()
+        ;
+
+    function showModal(id) {
+        $(`.ui.basic.${id}.modal`)
+            .modal('show')
+            ;
+
+        console.log("ID", id)
+    }
+
+
+</script>
+
+</html>

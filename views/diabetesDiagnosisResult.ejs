@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head.ejs'); %>
+        <title>
+            <%= title%>
+        </title>
+</head>
+
+<body>
+
+    <%- include('../partials/nav.ejs', {id:4,username: username}); %>
+
+        <div class="ui raised very padded text container segment">
+            <h2 class="ui block header">
+
+                <div class="content"><i class="heartbeat icon"></i>
+                    Your Diabetes Diagnosis Result
+                    <div class="sub header">The effectiveness of the output is subjected to change</div>
+                </div>
+            </h2>
+
+            <div class="ui blurring segment">
+                <%if (prediction==='0' ) { %>
+                    <div class="ui raised very padded text segment success message">
+                        <% } else { %>
+                            <div class="ui raised very padded text segment warning message">
+                                <% } %>
+                                    <h2 class="ui header">
+                                        <%if (prediction==='0' ) { %>
+                                            Congratulations, You do not have diabetes!
+                                            <% } else { %>
+                                                Oops, it seems like you may have diabetes!
+                                                <% } %>
+                                    </h2>
+                                    <p> Disclaimer: The prediction may not be very accurate</p>
+
+                            </div>
+
+                            <div class="ui dimmer">
+                                <div class="ui info message">
+                                    <div class="header">
+                                        Ready for the result?
+                                    </div>
+                                    <p>Whatever the result is, do not panic.</p>
+                                    <p>It is just a prediction.</p>
+                                </div>
+
+                            </div>
+
+                    </div>
+            </div>
+</body>
+
+<script>
+    $('.dimmer').dimmer('show');
+
+    $('.result')
+        .transition('set looping')
+        .transition('bounce', '2000ms')
+        ;</script>
+
+
+</html>

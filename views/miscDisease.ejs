@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head.ejs'); %>
+        <title>
+            <%= title%>
+        </title>
+</head>
+
+<body>
+    <!-- <div class="ui segment"> -->
+        <%- include('../partials/nav.ejs', {id: 3,username: username}); %>
+
+        <div class="ui raised very padded text container green segment">
+                <h2 class="ui block header">
+                    <div class="content"><i class="heartbeat icon"></i>
+                        Miscellaneous Clinical Diseases Diagnosis
+                        <div class="sub header">Check if your body symptoms indicate any medical diseases</div>
+                    </div>
+                </h2>
+                <div class="ui attached message">
+                    <div class="header">
+                        Mark the symptoms you have
+                    </div>
+                    <p>Please mark all the symptoms you may have for a better diagnosis.</p>
+                </div>
+                <form class="ui form attached fluid segment" method="POST" action="/api/prediction/md"
+                    onsubmit="myFunction()">
+                    <div class="ui labeled input">
+                        <div class="ui label required inline field">
+                          Person's Name :
+                        </div>
+                        <input type="text" name="name" required placeholder="Enter Person's Name Here">
+                      </div>
+                      <br> <br>
+                    <div class="ui grid">
+
+                        <% for(var i=0; i<symptoms.length; i++) {%>
+
+                            <div class="five wide column">
+                                <div class="ui toggle left floated compact checkbox">
+                                    <input type="checkbox" name="symptoms" value=<%=i+2 %>>
+                                    <label>
+                                        <%= symptoms[i] %>
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- <br> <br> -->
+                            <% } %>
+                    </div>
+                    <input type = "hidden" name = "username" value = <%= username %> />
+                    <button class="ui button" type="submit">Submit</button>
+                </form>
+
+            <!-- </div> -->
+</body>
+<div class="ui dimmer">
+    <div class="ui text loader">Loading</div>
+</div>
+
+</div>
+<script>
+    function myFunction() {
+        // alert("The form was submitted");
+        $('.dimmer').dimmer('show');
+    }
+
+    // $('.dimmer').dimmer('show');
+
+
+</script>
+
+</html>

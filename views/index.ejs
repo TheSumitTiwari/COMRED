@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head.ejs'); %>
+        <title>
+            <%= title%>
+        </title>
+</head>
+
+<body>
+
+    <%- include('../partials/nav.ejs',{id: 1,username: username}); %>
+        <div class="ui raised very padded text container green segment">
+            <h2 class="ui block header">
+                <div class="content"><i class="home icon"></i>
+                    Home
+                    <div class="sub header">Welcome to ComRed</div>
+                </div>
+            </h2>
+            <img class="ui centered medium image" src="/images/banner-transparent.png">
+
+            <div class="centered">
+                <div class="ui cards">
+                    <div class="card">
+                        <div class="content ">
+                            <div class="header">Heart Disease Prognosis</div>
+                            <div class="description">
+                                Check if your heart will remain healthy for next 10 years or not.
+                            </div>
+                        </div>
+                        <a href="/heartPrognosis" class="ui bottom attached button">
+                            <i class="medkit icon"></i>
+                            Checkup
+                        </a>
+                    </div>
+                    <div class="card">
+                        <div class="content">
+                            <div class="header">Miscellaneous Clinical Diseases Diagnosis</div>
+                            <div class="description">
+                                Check if your body symptoms indicate any medical diseases
+                            </div>
+                        </div>
+                        <a href="/miscDiagnosis" class="ui bottom attached button">
+                            <i class="medkit icon"></i>
+                            Checkup
+                        </a>
+                    </div>
+                    <div class="card">
+                        <div class="content ">
+                            <div class="header">Diabetes Diagnosis</div>
+                            <div class="description">
+                                Check if have diebetes or not!
+                            </div>
+                        </div>
+                        <a href="/diabetesDiagnosis" class="ui bottom attached button">
+                            <i class="medkit icon"></i>
+                            Checkup
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+</body>
+
+</html>

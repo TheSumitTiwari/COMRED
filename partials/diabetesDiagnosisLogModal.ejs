@@ -1,0 +1,82 @@
+<% var inputArr=input.split(" "); %>
+<% var index =0; %>
+<div class=" ui basic modal <%=id %>">
+    <div class="ui header">
+        Report Log
+    </div>
+    <div class="content">
+        <div class="ui right aligned grid">
+            <div class="left floated left aligned five wide column">
+               <h3> Name of the Person : <%= name %></h3>
+            </div>
+            <div class="right floated right aligned seven wide column">
+                <h3>Date and Time : <%= date %></h3>
+            </div>
+        </div>
+        <table class="ui celled white striped table">
+            <thead>
+                <tr>
+                    <th class="ten wide">Input Name</th>
+                    <th class="six wide">Input Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pregnancies</td>
+                    <td>
+                        <%=inputArr[index++] %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Glucose Level</td>
+                    <td>
+                        <%=inputArr[index++] %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Blood Pressure</td>
+                    <td>
+                        <%=inputArr[index++] %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Insulin Level</td>
+                    <td>
+                        <%=inputArr[index++] %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Body Mass Index (BMI)</td>
+                    <td>
+                        <%=inputArr[index++] %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Age</td>
+                    <td>
+                        <%=inputArr[index++] %>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th> <b>Result</b></th>
+                    <% if(output=="1" ){%>
+                        <th style="color:rgb(158, 4, 4);;">
+                            You are likely to have diabetes.
+                        </th>
+                        <% } else {%>
+                            <th style="color:rgb(4, 163, 17);"> You are safe from diabetes. </th>
+                            <% }%>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="actions">
+        <div class="ui red basic cancel inverted button">
+            <i class="remove icon"></i>
+            Close
+        </div>
+
+    </div>
+    </div>

@@ -1,0 +1,94 @@
+<div class="ui secondary pointing menu ">
+    <!-- <div class="ui small image" style="padding-right: 10px; padding-left: 10px;">
+        <svg width="150" height="50"> top fixed 
+            <image xlink:href="/images/title-transparent.png" x="0" y="0" width="100%" height="100%"></image>
+        </svg>
+    </div> -->
+    <div class="header item">
+        <svg width="150" height="20">
+            <image xlink:href="/images/title-transparent.png" x="0" y="0" width="100%" height="100%"></image>
+        </svg>
+    </div>
+    <% if(id==1){%>
+        <a class="active item" href="/">
+            Home
+        </a>
+        <%  } else {%>
+        <a class="item" href="/">
+            Home
+        </a>
+        <%  }%>
+
+    <% if(id==2){%>
+        <a class="active item" href="/heartPrognosis">
+            Heart Prognosis
+        </a>
+        <%  } else {%>
+        <a class="item" href="/heartPrognosis">
+            Heart Prognosis
+        </a>
+        <%  }%>
+    
+    <% if(id==3){%>
+        <a class="active item" href="/miscDiagnosis">
+            Misc. Disease Diagnosis
+        </a>
+        <%  } else {%>
+        <a class="item" href="/miscDiagnosis">
+            Misc. Disease Diagnosis
+        </a>
+        <%  }%>
+
+        <% if(id==4){%>
+            <a class="active item" href="/diabetesDiagnosis">
+                Diabetes Diagnosis
+            </a>
+            <%  } else {%>
+            <a class="item" href="/diabetesDiagnosis">
+                Diabetes Diagnosis
+            </a>
+            <%  }%>
+    <% if(id==5){%>
+        <a class="active item" href="/logs">
+            Logs
+        </a>
+        <%  } else {%>
+        <a class="item" href="/logs">
+            Logs
+        </a>
+        <%  }%>
+    
+  
+    <div class="right menu">
+        <% if(id==6){%>
+            <div class="active item" >
+                Instructions
+            </div>
+            <% } else {%>
+            <div class="item" >
+                Instructions
+            </div>
+            <%  }%>
+           
+        <% if(username!=""){%>
+            <div class="item">
+                <div class="ui blue medium label">
+                    <i class="user circle icon"></i>
+                    <%=username%>
+                    <div class="detail">User</div>
+                </div>
+            </div>
+        <div class="item">
+            <a class="ui primary button" href="api/user/logout">LOGOUT </a>
+        </div>
+        <% }else{%>
+        <div class="item">
+            <a class="ui primary button" href="/login">LOGIN </a>
+        </div>
+        <%}%>
+    </div>
+</div>
+
+<!-- <div style="height: 7%;">
+
+</div> -->

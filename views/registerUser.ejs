@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head.ejs'); %>
+        <title>
+            <%= title%>
+        </title>
+</head>
+
+<body>
+
+    <%- include('../partials/nav.ejs', {id: 7, username: username}); %>
+
+
+        <div class="ui raised very padded text container segment">
+
+            <% if(success && success.length>0) {%>
+                <div class="ui success message">
+                    <div class="header">
+                        <strong>
+                            <i class="check icon"></i>
+                            <%=success%>
+                        </strong>
+                    </div>
+                </div>
+                <%}%>
+                    <% if(error && error.length>0) {%>
+                        <div class="ui error message">
+                            <div class="header">
+                                <i class="close icon"></i>
+                                <%=error%>
+                            </div>
+                        </div>
+                        <%}%>
+
+
+                            <h2 class="ui block header">
+                                <div class="content"><i class="user plus icon"></i>
+                                    Welcome to COMRED!
+                                    <div class="sub header">Fill out the form below to sign-up for a new account</div>
+                                </div>
+                            </h2>
+                            <div class="ui attached message">
+                                <div class="header">
+                                    Register
+                                </div>
+                                <p>Create an account</p>
+                            </div>
+                            <form class="ui form attached fluid segment" method="POST" action="/api/user/register2">
+                                <div class="field">
+                                    <label>Email</label>
+                                    <input type="email" name="username" id="username" placeholder="Enter Your Email"
+                                        autocomplete="off">
+                                </div>
+                                <div class="field">
+                                    <label>Create Password</label>
+                                    <input type="password" name="password" id="password" placeholder="Create Password"
+                                        autocomplete="off">
+                                </div>
+
+                                <input role="button" class="ui button" type="submit" value="Register my account" />
+                            </form>
+                            <div class="ui bottom attached warning message">
+                                <i class="icon help"></i>
+                                Already have an account? &nbsp; <a href="/login"> Login here</a> instead.
+                            </div>
+
+        </div>
+</body>
+
+</html>

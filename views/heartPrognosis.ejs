@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head.ejs'); %>
+        <title>
+            <%= title%>
+        </title>
+</head>
+
+<body>
+
+    <!-- <div class="ui segment"> -->
+        <%- include('../partials/nav.ejs',{id: 2,username: username}) %>
+
+        <div class="ui raised very padded text container green segment">
+                <h2 class="ui block header">
+                    <div class="content"><i class="heartbeat icon"></i>
+                        Heart Disease Prognosis
+                        <div class="sub header">Check if your heart is healthy or not in upcoming 10 years</div>
+                    </div>
+                </h2>
+                <div class="ui attached message">
+                    <div class="header">
+                        Fill in your health parameters
+                    </div>
+                    <p>Please fill all the health parameters accurately for a better prognosis.</p>
+                </div>
+                <form class="ui form attached fluid segment" method="POST" action="/api/prediction/hp"
+                    onsubmit="myFunction()">
+                    <div class="ui labeled input">
+                        <div class="ui label">
+                          Person's Name :
+                        </div>
+                        <input type="text" name="name" required placeholder="Enter Person's Name Here">
+                      </div>
+                      <br> <br>
+                    <div class="field">
+                        <label>Age</label>
+                        <input type="number" name="age" required placeholder="Enter your age here" required value="20">
+                    </div>
+                    <div class="field">
+                        <label>Cholestrol Level </label>
+                        <input type="text" name="totChol" required placeholder="Enter your cholestrol level here" required
+                            value="225">
+                    </div>
+                    <div class="field">
+                        <label>Systolic Blood Pressure</label>
+                        <input type="text" name="sysBP" required placeholder="Enter your systolic blood pressure" required
+                            value="150">
+                    </div>
+                    <div class="field">
+                        <label>Diastolic Blood Pressure</label>
+                        <input type="text" name="diaBP" required placeholder="Enter your diastolic blood pressure" required
+                            value="95">
+                    </div>
+                    <div class="field">
+                        <label>Body Mass Index (BMI)</label>
+                        <input type="text" name="BMI" required placeholder="Enter your bmi here" required value="28.58">
+                    </div>
+                    <div class="field">
+                        <label>Glucose Level</label>
+                        <input type="text" name="glucose" required placeholder="Enter your glucose level here" required
+                            value="103">
+                    </div>
+                    <input type = "hidden" name = "username" value = <%= username %> />
+                    <button class="ui button" type="submit">Submit</button>
+                </form>
+            <!-- </div> -->
+</body>
+<div class="ui dimmer">
+    <div class="ui text loader">Loading</div>
+</div>
+
+</div>
+<script>
+    function myFunction() {
+        // alert("The form was submitted");
+        $('.dimmer').dimmer('show');
+    }
+
+    // $('.dimmer').dimmer('show');
+
+
+</script>
+
+</html>
